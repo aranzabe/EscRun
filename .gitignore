@@ -70,6 +70,7 @@ crashlytics-build.properties
 # Assets importados
 /[Aa]ssets/Abandoned_Asylum*
 /[Aa]ssets/_Course Library*
+/[Aa]ssets/asset_store*
 
 # Temporary auto-generated Android Assets
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
