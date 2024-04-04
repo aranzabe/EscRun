@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 
 public class CajonScript : MonoBehaviour
 {
     public GameObject cajon;
+    public GameObject texto;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,9 +19,17 @@ public class CajonScript : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
+
+    private void OnTriggerEnter(Collider other)
     {
-        
+        if (Parametros.cajon1Cerrado)
+        {
+            texto.SetActive(true);
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        texto.SetActive(false);
     }
 }
