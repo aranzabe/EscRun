@@ -3,7 +3,9 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Candado_Cajon1
+  - Llave_Cajon1
   layers:
   - Default
   - TransparentFX
