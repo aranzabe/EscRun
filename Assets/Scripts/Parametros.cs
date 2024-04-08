@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Parametros : MonoBehaviour
 {
-    public static bool cajon1Cerrado = true;
+    public static bool[] cajonesAbiertos = new bool[12];
 
-   
 }

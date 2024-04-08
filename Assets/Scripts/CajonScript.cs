@@ -8,12 +8,18 @@ public class CajonScript : MonoBehaviour
 {
     public GameObject cajon;
     public GameObject texto;
+    private string numeroCajon;
+
     // Start is called before the first frame update
     void Start()
     {
-        if (Parametros.cajon1Cerrado)
+        string nombreCajon = cajon.name;
+        string[] partesNombreCajon = nombreCajon.Split('_');
+        numeroCajon = partesNombreCajon[1];
+
+        if (!Parametros.cajonesAbiertos[int.Parse(numeroCajon) - 1])
         {
-            Debug.Log("Deshabilitando cajon1");
+            Debug.Log("Deshabilitando cajon");
             XRGrabInteractable xgrab = cajon.GetComponent<XRGrabInteractable>();
             xgrab.enabled = false;
         }
@@ -22,7 +28,7 @@ public class CajonScript : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (Parametros.cajon1Cerrado)
+        if (!Parametros.cajonesAbiertos[int.Parse(numeroCajon) - 1])
         {
             texto.SetActive(true);
         }

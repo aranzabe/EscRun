@@ -4,13 +4,16 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Candado_Cajon1
-  - Llave_Cajon1
+  - CandadoCajon_4
+  - CandadoCajon_1
+  - Llave_Puerta_1
+  - Llave_Cajon_1
+  - Llave_Cajon_4
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Cerraduras
   - Water
   - UI
   - 
