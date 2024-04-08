@@ -9,7 +9,7 @@ public class CandadoScript : MonoBehaviour
     public GameObject cajonAbre;
     public GameObject canvas;
     public TextMeshProUGUI texto;
-
+    public AudioSource audioSource;
    
 
     private void OnTriggerEnter(Collider other)
@@ -26,7 +26,7 @@ public class CandadoScript : MonoBehaviour
         
         if (numeroLlave == numeroCajon && partesNombreLlave[1] == "Cajon") 
         {
-
+            audioSource.Play();
             Debug.Log("Cajón " + numeroCajon + " abierto");
 
             XRGrabInteractable xgrab = cajonAbre.GetComponent<XRGrabInteractable>();
