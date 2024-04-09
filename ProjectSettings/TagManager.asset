@@ -4,8 +4,6 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - CandadoCajon_4
-  - CandadoCajon_1
   - Llave_Puerta_1
   - Llave_Cajon_1
   - Llave_Cajon_4
@@ -22,6 +20,9 @@ TagManager:
   - Nota_String_3
   - Nota_Float_4
   - Nota_Char_5
+  - Candado_Cajon_4
+  - Candado_Cajon_1
+  - Candado_Armario_1
   layers:
   - Default
   - TransparentFX

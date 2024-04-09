@@ -20,26 +20,32 @@ public class CandadoScript : MonoBehaviour
         string nombreCajon = cajonAbre.name;
 
         string[] partesNombreCajon = nombreCajon.Split('_'); 
-        string numeroCajon = partesNombreCajon[1]; 
+        string numeroCajon = partesNombreCajon[2]; 
 
         string nombreLlave = other.tag; 
         string[] partesNombreLlave = nombreLlave.Split('_'); 
         string numeroLlave = partesNombreLlave[2];
 
         
-        if (numeroLlave == numeroCajon && partesNombreLlave[1] == "Cajon") 
+        if (numeroLlave == numeroCajon) 
         {
             audioSource.Play();
-            Debug.Log("Cajón " + numeroCajon + " abierto");
 
             XRGrabInteractable xgrab = cajonAbre.GetComponent<XRGrabInteractable>();
             xgrab.enabled = true;
+            if (partesNombreCajon[1] == "Cajon")
+            {
+                Parametros.cajonesAbiertos[int.Parse(numeroCajon) -1] = true;
+            }
+            if (partesNombreCajon[1] == "Armario")
+            {
+                Parametros.armariosAbiertos[int.Parse(numeroCajon) - 1] = true;
+            }
 
-            Parametros.cajonesAbiertos[int.Parse(numeroCajon) -1] = true;
-            texto.text = "Cajón " + numeroCajon + " abierto";
+            texto.text = partesNombreCajon[1] +  " " + numeroCajon + " abierto";
         } else
         {
-            texto.text = "Esta llave no abre este cajón";
+            texto.text = "Esta llave no abre este " + partesNombreCajon[1].ToLower();
         }
         canvas.SetActive(true);
         Invoke("DesactivarCanvas", 1f);

@@ -10,35 +10,65 @@ using UnityEngine.XR.Interaction.Toolkit;
 public class CajonScript : MonoBehaviour
 {
     public GameObject cajon;
-    public GameObject texto;
+    public GameObject canvas;
+    //public TextMeshProUGUI texto;
     private string numeroCajon;
-
+    private string[] partesNombreCajon;
     // Start is called before the first frame update
     void Start()
     {
         string nombreCajon = cajon.name;
-        string[] partesNombreCajon = nombreCajon.Split('_');
-        numeroCajon = partesNombreCajon[1];
+        partesNombreCajon = nombreCajon.Split('_');
+        numeroCajon = partesNombreCajon[2];
 
-        if (!Parametros.cajonesAbiertos[int.Parse(numeroCajon) - 1])
+        
+
+        if (partesNombreCajon[1] == "Cajon")
         {
-            Debug.Log("Deshabilitando cajon");
-            XRGrabInteractable xgrab = cajon.GetComponent<XRGrabInteractable>();
-            xgrab.enabled = false;
+            if (!Parametros.cajonesAbiertos[int.Parse(numeroCajon) - 1])
+            {
+                Debug.Log("Deshabilitando cajon");
+                XRGrabInteractable xgrab = cajon.GetComponent<XRGrabInteractable>();
+                xgrab.enabled = false;
+            }
         }
+        if (partesNombreCajon[1] == "Armario")
+        {
+            if (!Parametros.armariosAbiertos[int.Parse(numeroCajon) - 1])
+            {
+                Debug.Log("Deshabilitando cajon");
+                XRGrabInteractable xgrab = cajon.GetComponent<XRGrabInteractable>();
+                xgrab.enabled = false;
+            }
+        }
+
     }
 
 
     private void OnTriggerEnter(Collider other)
     {
-        if (!Parametros.cajonesAbiertos[int.Parse(numeroCajon) - 1])
+        ////---Borrar
+        //texto.text = Parametros.armariosAbiertos.ToString();
+        //canvas.SetActive(true);
+        ////---Borrar
+        if (partesNombreCajon[1] == "Cajon")
         {
-            texto.SetActive(true);
+            if (!Parametros.cajonesAbiertos[int.Parse(numeroCajon) - 1])
+            {
+                canvas.SetActive(true);
+            }
+        }
+        if (partesNombreCajon[1] == "Armario")
+        {
+            if (!Parametros.armariosAbiertos[int.Parse(numeroCajon) - 1])
+            {
+                canvas.SetActive(true);
+            }
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        texto.SetActive(false);
+        canvas.SetActive(false);
     }
 }
