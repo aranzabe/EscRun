@@ -4,6 +4,9 @@ using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 using TMPro;
 
+/**
+ * Este script es para ver si la llave que se pone en un candado de un cajón es correcta.
+ */
 public class CandadoScript : MonoBehaviour
 {
     public GameObject cajonAbre;

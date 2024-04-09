@@ -4,6 +4,9 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 
+/**
+ * Este script es para decir si un cajón está cerrado o no. Si está cerrado deshabilita la propiedad de grab.
+ */
 public class CajonScript : MonoBehaviour
 {
     public GameObject cajon;
