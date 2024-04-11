@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using TMPro;
+using UnityEngine.XR.Interaction.Toolkit;
 
 
 /**
@@ -92,6 +93,9 @@ public class ButtonPlayDatos : MonoBehaviour
                     Vector3 currentPosition = cajon.transform.localPosition;
                     float nuevaPosicionZ = currentPosition.z - 0.3f;
                     cajon.transform.localPosition = new Vector3(currentPosition.x, currentPosition.y, nuevaPosicionZ);
+
+                    XRGrabInteractable xgrab = cajon.GetComponent<XRGrabInteractable>();
+                    xgrab.enabled = true;
                 }
             }
         } else
