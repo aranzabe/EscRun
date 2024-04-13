@@ -23,6 +23,13 @@ TagManager:
   - Candado_Cajon_4
   - Candado_Cajon_1
   - Candado_Armario_1
+  - CandadoCajon_1
+  - Boton_ResolverCondicion_6
+  - Boton_Condicion_4
+  - Boton_Condicion_1
+  - Boton_Condicion_2
+  - Boton_Condicion_3
+  - Boton_Condicion_5
   layers:
   - Default
   - TransparentFX
