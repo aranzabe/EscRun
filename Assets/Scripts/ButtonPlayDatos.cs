@@ -100,7 +100,7 @@ public class ButtonPlayDatos : MonoBehaviour
             texto.text = "Este enigma ya está resuelto.";
         }
         canvas.SetActive(true);
-        Invoke("DesactivarCanvas", 3f);
+        Invoke("DesactivarCanvas", 5f);
     }
 
     private void DesactivarCanvas()

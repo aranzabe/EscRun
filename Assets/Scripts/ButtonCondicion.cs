@@ -39,8 +39,24 @@ public class ButtonCondicion : MonoBehaviour
         //textoAuxiliarGeneral.text = tagGa + " ";
         
         //textoAuxiliarGeneral.text += "Pulsado.";
+        
+        //Si el botón está bien colocado actualizamos el vector correspondiente (lo haremos viendo el número final que es el índice del vector).
+        //if (Parametros.enZocalo[int.Parse(partesNombreBoton[2]) - 1])
+        //{
+        //    Parametros.soportesInterruptoresBienColocados[int.Parse(partesNombreBoton[2]) - 1] = true;
+        //    textoAuxiliarGeneral.text += " en pos correcta";
+        //} else
+        //{
+        //    Parametros.soportesInterruptoresBienColocados[int.Parse(partesNombreBoton[2]) - 1] = false;
+        //}
+
+
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
         //Cambiamos el material al pulsar (pulsado o no).
-        Parametros.botonCondicionPulsado[int.Parse(partesNombreBoton[2])-1] = !Parametros.botonCondicionPulsado[int.Parse(partesNombreBoton[2]) - 1];
+        Parametros.botonCondicionPulsado[int.Parse(partesNombreBoton[2]) - 1] = !Parametros.botonCondicionPulsado[int.Parse(partesNombreBoton[2]) - 1];
 
         if (!Parametros.botonCondicionPulsado[int.Parse(partesNombreBoton[2]) - 1])
         {
@@ -49,36 +65,6 @@ public class ButtonCondicion : MonoBehaviour
         else
         {
             meshRenderer.material = pressedMaterial;
-        }
-        //Si el botón está bien colocado actualizamos el vector correspondiente (lo haremos viendo el número final que es el índice del vector).
-        if (Parametros.enZocalo[int.Parse(partesNombreBoton[2]) - 1])
-        {
-            Parametros.soportesInterruptoresBienColocados[int.Parse(partesNombreBoton[2]) - 1] = true;
-            textoAuxiliarGeneral.text += " en pos correcta";
-        } else
-        {
-            Parametros.soportesInterruptoresBienColocados[int.Parse(partesNombreBoton[2]) - 1] = false;
-        }
-
-
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        textoAuxiliarGeneral.text = "";
-        for (int i = 0; i < Parametros.botonCondicionPulsado.Length; i++)
-        {
-            if (Parametros.botonCondicionPulsado[i])
-            //if (Parametros.enZocalo[i])
-            //if (Parametros.soportesInterruptoresBienColocados[i])
-            {
-                textoAuxiliarGeneral.text += "v ";
-            }
-            else
-            {
-                textoAuxiliarGeneral.text += "f ";
-            }
-
         }
     }
 

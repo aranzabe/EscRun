@@ -14,6 +14,7 @@ public class Parametros : MonoBehaviour
 
 
     //Condicionales
+    public static bool enigmaCondicionalesResuelto = false;
     public static bool[] soportesInterruptoresBienColocados = new bool[6]; //Para saber si están bien colocados.
     public static bool[] enZocalo = new bool[6]; //Esto es para ver si los botones de las condiciones están en el zócalo y se activa la posibilidad de pulsar el botón.
     public static bool[] botonCondicionPulsado = new bool[5]; //True o false según si están pulsados o no. Se usará para la solución del enigma 2 y para cambiar el material de los interruptores.

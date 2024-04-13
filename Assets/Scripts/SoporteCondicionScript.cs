@@ -78,24 +78,37 @@ public class SoporteCondicionScript : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        //texto.text = texto.text + "Enter: " + other.tag;
+        texto.text = texto.text + "Enter: " + other.tag;
         string interruptorNombre = other.tag;
         partesNombreBoton = interruptorNombre.Split('_');
-        //texto.text = texto.text + " -- " + partesNombreInterruptor[2];
-        if (numeroSoporte == partesNombreBoton[2])
-        {
-            Parametros.soportesInterruptoresBienColocados[int.Parse(numeroSoporte)-1] = true;
-        }
-        else
-        {
-            Parametros.soportesInterruptoresBienColocados[int.Parse(numeroSoporte)-1] = false;
-        }
-        textoAuxiliarGeneral.text = "";
-        textoAuxiliarGeneral.text = partesNombreBoton[0] + partesNombreBoton[1] + partesNombreBoton[2];
+        texto.text = texto.text + " -- " + partesNombreBoton[2];
+
+        //Si el botón está bien colocado actualizamos el vector correspondiente (lo haremos viendo el número final que es el índice del vector).
+        //if (Parametros.enZocalo[int.Parse(partesNombreBoton[2]) - 1])
+        //{
+        //    Parametros.soportesInterruptoresBienColocados[int.Parse(partesNombreBoton[2]) - 1] = true;
+        //    textoAuxiliarGeneral.text += " en pos correcta";
+        //}
+        //else
+        //{
+        //    Parametros.soportesInterruptoresBienColocados[int.Parse(partesNombreBoton[2]) - 1] = false;
+        //}
+
+        
     }
 
     private void OnTriggerExit(Collider other)
     {
+        if (numeroSoporte == partesNombreBoton[2])
+        {
+            Parametros.soportesInterruptoresBienColocados[int.Parse(numeroSoporte) - 1] = true;
+        }
+        else
+        {
+            Parametros.soportesInterruptoresBienColocados[int.Parse(numeroSoporte) - 1] = false;
+        }
+        //textoAuxiliarGeneral.text = "";
+        //textoAuxiliarGeneral.text = partesNombreBoton[0] + partesNombreBoton[1] + partesNombreBoton[2];
         //if (numeroSoporte == partesNombreInterruptor[2])
         //{
         //    XRGrabInteractable xgrab = other.GetComponent<XRGrabInteractable>();
@@ -105,19 +118,30 @@ public class SoporteCondicionScript : MonoBehaviour
         //        xgrab.enabled = false;
         //    }
         //}
-        //texto.text = "";
-        //for (int i = 0; i < Parametros.enZocalo.Length; i++)
-        //{
-        //    if (Parametros.enZocalo[i])
-        //    {
-        //        texto.text += "v ";
-        //    }
-        //    else
-        //    {
-        //        texto.text += "f ";
-        //    }
-
-        //}
+        texto.text = "Soportes bien: ";
+        for (int i = 0; i < Parametros.soportesInterruptoresBienColocados.Length; i++)
+        {
+            if (Parametros.soportesInterruptoresBienColocados[i])
+            {
+                texto.text += "v ";
+            }
+            else
+            {
+                texto.text += "f ";
+            }
+        }
+        texto.text += "    | En zocalo bien: ";
+        for (int i = 0; i < Parametros.enZocalo.Length; i++)
+        {
+            if (Parametros.enZocalo[i])
+            {
+                texto.text += "v ";
+            }
+            else
+            {
+                texto.text += "f ";
+            }
+        }
     }
 
     //[System.Obsolete]
