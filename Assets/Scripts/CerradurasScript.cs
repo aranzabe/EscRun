@@ -46,15 +46,22 @@ public class CerradurasScript : MonoBehaviour
             }
             if (partesNombreCerradura[1] == "Puerta" && partesNombreLlave[1] == "Puerta")
             {
-                audioSource.Play();
-
-                Parametros.puertasAbiertas[int.Parse(numeroElemento) - 1] = true;
+                
                 texto.text = partesNombreCerradura[1] + " " + numeroElemento + " abierta";
                
                 if (partesNombreLlave[1] == "Puerta" && partesNombreLlave[2] == "1") //Es la puerta que va de la clase a la habitación y tiene que desaparecer.
                 {
+                    Parametros.puertasAbiertas[int.Parse(numeroElemento) - 1] = true;
+                    audioSource.Play();
                     canvas.SetActive(true);
                     StartCoroutine(DesactivarDespuesDeEspera());
+                }
+                if (partesNombreLlave[1] == "Puerta" && partesNombreLlave[2] == "2" && !Parametros.puertasAbiertas[1]) //Es la puerta que va de la clase a la habitación al cuarto de estar y tiene que moverse.
+                {
+                    Parametros.puertasAbiertas[int.Parse(numeroElemento) - 1] = true;
+                    audioSource.Play();
+                    canvas.SetActive(true);
+                    StartCoroutine(RotarDespuesDeEspera());
                 }
             }
         } else
@@ -84,4 +91,11 @@ public class CerradurasScript : MonoBehaviour
         cerraduraAbre.SetActive(false); //Hace que desaparezca la puerta.
     }
 
+    IEnumerator RotarDespuesDeEspera()
+    {
+        yield return new WaitForSeconds(2f);
+        cerraduraAbre.transform.Rotate(Vector3.down, 90f, Space.Self);
+        Parametros.puerta2HabitacionCuartoAbierta = true;
+        //Hace que rote la puerta.
+    }
 }

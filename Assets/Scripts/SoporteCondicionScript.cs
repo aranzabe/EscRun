@@ -15,6 +15,7 @@ public class SoporteCondicionScript : MonoBehaviour
     public XRBaseInteractor interactor;
 
     public TextMeshProUGUI textoAuxiliarGeneral;
+    private bool zocaloOcupado = false;
     //public XRSocketInteractor socketInteractor;
     //public XRGrabInteractable interactable;
 
@@ -33,14 +34,18 @@ public class SoporteCondicionScript : MonoBehaviour
 
     private void OnSelectExit(SelectExitEventArgs arg0)
     {
+        zocaloOcupado = false;
         texto.text = "Socket vacio";
-        Parametros.enZocalo[int.Parse(numeroSoporte) - 1] = false;
+        //Parametros.enZocalo[int.Parse(numeroSoporte) - 1] = false;
+        Parametros.soportesBienColocados[int.Parse(numeroSoporte) - 1] = false;
     }
 
     private void OnSelectEnter(SelectEnterEventArgs arg0)
     {
+        zocaloOcupado =true;
         texto.text = "Socket con objeto";
         Parametros.enZocalo[int.Parse(numeroSoporte) - 1] = true;
+
     }
 
 
@@ -83,6 +88,15 @@ public class SoporteCondicionScript : MonoBehaviour
         partesNombreBoton = interruptorNombre.Split('_');
         texto.text = texto.text + " -- " + partesNombreBoton[2];
 
+        if (numeroSoporte == partesNombreBoton[2])
+        {
+            Parametros.soportesInterruptoresBienColocados[int.Parse(numeroSoporte) - 1] = true;
+        }
+        else
+        {
+            Parametros.soportesInterruptoresBienColocados[int.Parse(numeroSoporte) - 1] = false;
+        }
+
         //Si el botón está bien colocado actualizamos el vector correspondiente (lo haremos viendo el número final que es el índice del vector).
         //if (Parametros.enZocalo[int.Parse(partesNombreBoton[2]) - 1])
         //{
@@ -94,19 +108,19 @@ public class SoporteCondicionScript : MonoBehaviour
         //    Parametros.soportesInterruptoresBienColocados[int.Parse(partesNombreBoton[2]) - 1] = false;
         //}
 
-        
+
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (numeroSoporte == partesNombreBoton[2])
-        {
-            Parametros.soportesInterruptoresBienColocados[int.Parse(numeroSoporte) - 1] = true;
-        }
-        else
-        {
-            Parametros.soportesInterruptoresBienColocados[int.Parse(numeroSoporte) - 1] = false;
-        }
+        //if (numeroSoporte == partesNombreBoton[2])
+        //{
+        //    Parametros.soportesInterruptoresBienColocados[int.Parse(numeroSoporte) - 1] = true;
+        //}
+        //else
+        //{
+        //    Parametros.soportesInterruptoresBienColocados[int.Parse(numeroSoporte) - 1] = false;
+        //}
         //textoAuxiliarGeneral.text = "";
         //textoAuxiliarGeneral.text = partesNombreBoton[0] + partesNombreBoton[1] + partesNombreBoton[2];
         //if (numeroSoporte == partesNombreInterruptor[2])
@@ -118,6 +132,13 @@ public class SoporteCondicionScript : MonoBehaviour
         //        xgrab.enabled = false;
         //    }
         //}
+        if (!zocaloOcupado)
+        {
+            Parametros.soportesInterruptoresBienColocados[int.Parse(partesNombreBoton[2]) - 1] = false;
+        }
+
+        mostrarEstado();
+
         texto.text = "Soportes bien: ";
         for (int i = 0; i < Parametros.soportesInterruptoresBienColocados.Length; i++)
         {
@@ -130,18 +151,18 @@ public class SoporteCondicionScript : MonoBehaviour
                 texto.text += "f ";
             }
         }
-        texto.text += "    | En zocalo bien: ";
-        for (int i = 0; i < Parametros.enZocalo.Length; i++)
-        {
-            if (Parametros.enZocalo[i])
-            {
-                texto.text += "v ";
-            }
-            else
-            {
-                texto.text += "f ";
-            }
-        }
+        //texto.text += "    | En zocalo bien: ";
+        //for (int i = 0; i < Parametros.enZocalo.Length; i++)
+        //{
+        //    if (Parametros.enZocalo[i])
+        //    {
+        //        texto.text += "v ";
+        //    }
+        //    else
+        //    {
+        //        texto.text += "f ";
+        //    }
+        //}
     }
 
     //[System.Obsolete]
@@ -152,7 +173,7 @@ public class SoporteCondicionScript : MonoBehaviour
     //        XRBaseInteractable interactable = interactor.selectTarget; 
     //        if (interactable != null)
     //        {
-                
+
     //            Parametros.enZocalo[int.Parse(numeroSoporte) - 1] = true;
     //        }
     //        else
@@ -160,7 +181,59 @@ public class SoporteCondicionScript : MonoBehaviour
     //            Parametros.enZocalo[int.Parse(numeroSoporte) - 1] = false;
     //        }
     //    }
-        
+
     //}
 
+
+    private void mostrarEstado()
+    {
+        textoAuxiliarGeneral.text = "Soportes bien colocados: ";
+        for (int i = 0; i < Parametros.soportesInterruptoresBienColocados.Length; i++)
+        {
+            if (Parametros.soportesInterruptoresBienColocados[i])
+            {
+                textoAuxiliarGeneral.text += "v ";
+            }
+            else
+            {
+                textoAuxiliarGeneral.text += "f ";
+            }
+        }
+        textoAuxiliarGeneral.text += "En zocalo: ";
+        for (int i = 0; i < Parametros.enZocalo.Length; i++)
+        {
+            if (Parametros.enZocalo[i])
+            {
+                textoAuxiliarGeneral.text += "v ";
+            }
+            else
+            {
+                textoAuxiliarGeneral.text += "f ";
+            }
+        }
+        textoAuxiliarGeneral.text += "Pulsados: ";
+        for (int i = 0; i < Parametros.botonCondicionPulsado.Length; i++)
+        {
+            if (Parametros.botonCondicionPulsado[i])
+            {
+                textoAuxiliarGeneral.text += "v ";
+            }
+            else
+            {
+                textoAuxiliarGeneral.text += "f ";
+            }
+        }
+        textoAuxiliarGeneral.text += "Respuesta correcta: ";
+        for (int i = 0; i < Parametros.solucionEnigmaCondiciones.Length; i++)
+        {
+            if (Parametros.solucionEnigmaCondiciones[i])
+            {
+                textoAuxiliarGeneral.text += "v ";
+            }
+            else
+            {
+                textoAuxiliarGeneral.text += "f ";
+            }
+        }
+    }
 }

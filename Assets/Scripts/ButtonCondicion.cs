@@ -66,6 +66,7 @@ public class ButtonCondicion : MonoBehaviour
         {
             meshRenderer.material = pressedMaterial;
         }
+        
     }
 
     //IEnumerator RecolocarBoton(Vector3 currentPosition)

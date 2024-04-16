@@ -106,14 +106,20 @@ public class ButtonPlayCondicion : MonoBehaviour
                 }
                 if (Parametros.enigmaCondicionalesResuelto)
                 {
-                    texto.text = "Enigma 2 completado!!! Algo ha cambiado.";
-                    
+                    texto.text = "Enigma 2 completado!!! Pero estoy atascada, necesito que me ayudes para poder liberarte...";
                 }
             }
         }
         else
         {
-            texto.text = "Este enigma ya está resuelto.";
+            if (Parametros.puerta2HabitacionCuartoAbierta)
+            {
+                texto.text = "Este enigma ya está resuelto.";
+            } else
+            {
+                texto.text = "Estoy atascada, necesito que me ayudes para poder liberarte...";
+            }
+            
         }
         canvas.SetActive(true);
         Invoke("DesactivarCanvas", 5f);

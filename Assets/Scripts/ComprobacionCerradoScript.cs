@@ -35,6 +35,7 @@ public class ComprobacionCerradoScript : MonoBehaviour
                 xgrab.enabled = false;
             }
         }
+        canvas.SetActive(false);
     }
 
 
