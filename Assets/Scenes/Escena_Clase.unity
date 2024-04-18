@@ -7483,6 +7483,104 @@ Transform:
   - {fileID: 2047411054}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &184589791
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 269847422}
+    m_Modifications:
+    - target: {fileID: 7412950678016150922, guid: 1ea6f70bc811dd64a8cbd0a4c937f2a3,
+        type: 3}
+      propertyPath: m_Name
+      value: Inventory
+      objectReference: {fileID: 0}
+    - target: {fileID: 7532894437861959174, guid: 1ea6f70bc811dd64a8cbd0a4c937f2a3,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.17294936
+      objectReference: {fileID: 0}
+    - target: {fileID: 7532894437861959174, guid: 1ea6f70bc811dd64a8cbd0a4c937f2a3,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.448
+      objectReference: {fileID: 0}
+    - target: {fileID: 7532894437861959174, guid: 1ea6f70bc811dd64a8cbd0a4c937f2a3,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.045564048
+      objectReference: {fileID: 0}
+    - target: {fileID: 7532894437861959174, guid: 1ea6f70bc811dd64a8cbd0a4c937f2a3,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7532894437861959174, guid: 1ea6f70bc811dd64a8cbd0a4c937f2a3,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7532894437861959174, guid: 1ea6f70bc811dd64a8cbd0a4c937f2a3,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7532894437861959174, guid: 1ea6f70bc811dd64a8cbd0a4c937f2a3,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7532894437861959174, guid: 1ea6f70bc811dd64a8cbd0a4c937f2a3,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7532894437861959174, guid: 1ea6f70bc811dd64a8cbd0a4c937f2a3,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -180
+      objectReference: {fileID: 0}
+    - target: {fileID: 7532894437861959174, guid: 1ea6f70bc811dd64a8cbd0a4c937f2a3,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 7925089378314603108, guid: 1ea6f70bc811dd64a8cbd0a4c937f2a3, type: 3}
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7412950678016150922, guid: 1ea6f70bc811dd64a8cbd0a4c937f2a3,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 184589794}
+  m_SourcePrefab: {fileID: 100100000, guid: 1ea6f70bc811dd64a8cbd0a4c937f2a3, type: 3}
+--- !u!4 &184589792 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7532894437861959174, guid: 1ea6f70bc811dd64a8cbd0a4c937f2a3,
+    type: 3}
+  m_PrefabInstance: {fileID: 184589791}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &184589793 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7412950678016150922, guid: 1ea6f70bc811dd64a8cbd0a4c937f2a3,
+    type: 3}
+  m_PrefabInstance: {fileID: 184589791}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &184589794
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 184589793}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38bc3578d258e874cb0b64807dc0571f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objeto: {fileID: 218900479}
 --- !u!1 &191044528
 GameObject:
   m_ObjectHideFlags: 0
@@ -8126,6 +8224,37 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b4565462db6db384ca38c2736c28e0e4, type: 3}
+--- !u!1 &218900478
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 218900479}
+  m_Layer: 0
+  m_Name: Inventory Anchor
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &218900479
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 218900478}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.6}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 364578161}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &219217401
 GameObject:
   m_ObjectHideFlags: 0
@@ -11008,6 +11137,38 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!1 &269847421
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 269847422}
+  m_Layer: 0
+  m_Name: ----------- Inventario -------------
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &269847422
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 269847421}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -4.213338, y: 3.1999998, z: -1.0370092}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 184589792}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!43 &275762452
 Mesh:
   m_ObjectHideFlags: 0
@@ -13379,6 +13540,7 @@ GameObject:
   - component: {fileID: 364578165}
   - component: {fileID: 364578166}
   - component: {fileID: 364578167}
+  - component: {fileID: 364578168}
   m_Layer: 0
   m_Name: LeftHand Controller
   m_TagString: Untagged
@@ -13398,7 +13560,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 218900479}
   m_Father: {fileID: 650672842}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &364578165
@@ -13752,6 +13915,65 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.05
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &364578168
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 364578160}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a8d337e8bc7ac4498e0df29e7b8bd5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  action:
+    m_Name: Action
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: dbb27167-43df-4be9-9f62-2c3a07566aed
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: fee744c0-0625-4772-9a45-84d92ecad7dc
+      m_Path: <XRController>{LeftHand}/secondaryButton
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Action
+      m_Flags: 0
+    m_Flags: 0
+  OnPress:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 184589794}
+        m_TargetAssemblyTypeName: SeguirInventario, Assembly-CSharp
+        m_MethodName: encender
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnRelease:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 184589794}
+        m_TargetAssemblyTypeName: SeguirInventario, Assembly-CSharp
+        m_MethodName: apagar
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &364950484
 GameObject:
   m_ObjectHideFlags: 0
@@ -83456,3 +83678,4 @@ SceneRoots:
   - {fileID: 1854471320}
   - {fileID: 1132151217}
   - {fileID: 142081747}
+  - {fileID: 269847422}
