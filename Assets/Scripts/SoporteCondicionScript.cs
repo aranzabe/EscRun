@@ -15,7 +15,7 @@ public class SoporteCondicionScript : MonoBehaviour
     public XRBaseInteractor interactor;
 
     public TextMeshProUGUI textoAuxiliarGeneral;
-    private bool zocaloOcupado = false;
+    //private bool zocaloOcupado = false;
     //public XRSocketInteractor socketInteractor;
     //public XRGrabInteractable interactable;
 
@@ -34,7 +34,7 @@ public class SoporteCondicionScript : MonoBehaviour
 
     private void OnSelectExit(SelectExitEventArgs arg0)
     {
-        zocaloOcupado = false;
+        //zocaloOcupado = false;
         texto.text = "Socket vacio";
         Parametros.enZocalo[int.Parse(numeroSoporte) - 1] = false;
         Parametros.soportesBienColocados[int.Parse(numeroSoporte) - 1] = false;
@@ -44,7 +44,7 @@ public class SoporteCondicionScript : MonoBehaviour
     [Obsolete]
     private void OnSelectEnter(SelectEnterEventArgs arg0)
     {
-        zocaloOcupado =true;
+        //zocaloOcupado =true;
         texto.text = "Socket con objeto";
         Parametros.enZocalo[int.Parse(numeroSoporte) - 1] = true;
         string interruptorNombre = arg0.interactable.gameObject.tag;

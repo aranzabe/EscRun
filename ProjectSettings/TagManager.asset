@@ -30,6 +30,8 @@ TagManager:
   - Boton_Condicion_2
   - Boton_Condicion_3
   - Boton_Condicion_5
+  - onSalon
+  - onCuarto
   layers:
   - Default
   - TransparentFX

@@ -88,12 +88,24 @@ public class CerradurasScript : MonoBehaviour
     IEnumerator DesactivarDespuesDeEspera()
     {
         yield return new WaitForSeconds(2f);
+        GameObject lucesClase = GameObject.Find("LucesClase");
+        GameObject sustoPuerta1 = GameObject.Find("SustoPuerta1");
+        // Verificar si se encontró el objeto
+        if (lucesClase != null)
+        {
+            lucesClase.SetActive(false);
+            
+        }
         cerraduraAbre.SetActive(false); //Hace que desaparezca la puerta.
+        AudioSource sound = sustoPuerta1.GetComponent<AudioSource>();
+        sound.Play();
     }
 
     IEnumerator RotarDespuesDeEspera()
     {
         yield return new WaitForSeconds(2f);
+        GameObject sustoPuerta2 = GameObject.Find("SustoPuerta2");
+        AudioSource sound = sustoPuerta2.GetComponent<AudioSource>();
         cerraduraAbre.transform.Rotate(Vector3.down, 90f, Space.Self);
         Parametros.puerta2HabitacionCuartoAbierta = true;
         //Hace que rote la puerta.
