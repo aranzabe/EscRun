@@ -32,6 +32,9 @@ TagManager:
   - Boton_Condicion_5
   - onSalon
   - onCuarto
+  - LeftHand
+  - RightHand
+  - Estatua
   layers:
   - Default
   - TransparentFX
