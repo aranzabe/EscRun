@@ -24,5 +24,6 @@ public class Parametros : MonoBehaviour
     //Auxiliares
     public static bool pistaCondicion1_CogidaPrimeraVez = false;
     public static bool puerta2HabitacionCuartoAbierta = false;
+    public static bool[] aparatosEncendidos = new bool[2]; //0 el proyector y 1 la tele.
 }
 
