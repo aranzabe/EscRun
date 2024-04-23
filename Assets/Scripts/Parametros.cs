@@ -21,9 +21,13 @@ public class Parametros : MonoBehaviour
     public static bool[] botonCondicionPulsado = new bool[5]; //True o false según si están pulsados o no. Se usará para la solución del enigma 2 y para cambiar el material de los interruptores.
     public static bool[] solucionEnigmaCondiciones = { true, false, true, true, false }; //Para comprobar si están bien pulsados. Al dar al botón de resolver se comprobará con esto.
 
+    //Bucles
+    public static string claveEnigmaBucle = "reloj";
+    public static bool enigmaBuclesResuelto = false;
+
     //Auxiliares
     public static bool pistaCondicion1_CogidaPrimeraVez = false;
     public static bool puerta2HabitacionCuartoAbierta = false;
-    public static bool[] aparatosEncendidos = new bool[2]; //0 el proyector y 1 la tele.
+    public static bool[] aparatosEncendidos = new bool[2]; //0 el proyector y 1 el monitor de clase.
 }
 

@@ -43,13 +43,19 @@ public class BotonEncenderAparatos : MonoBehaviour
         if (!Parametros.aparatosEncendidos[int.Parse(partesNombreBoton[2]) - 1])
         {
             meshRenderer.material = normalMaterial;
-            this.aparatoAActivar.SetActive(false);
+            if (this.aparatoAActivar != null)
+            {
+                this.aparatoAActivar.SetActive(false);
+            }
             imagenProyector.SetActive(false);
         }
         else
         {
             meshRenderer.material = pressedMaterial;
-            this.aparatoAActivar.SetActive(true);
+            if (this.aparatoAActivar != null)
+            {
+                this.aparatoAActivar.SetActive(true);
+            }
             imagenProyector.SetActive(true);
         }
         
