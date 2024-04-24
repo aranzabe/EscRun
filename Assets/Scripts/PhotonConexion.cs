@@ -19,6 +19,7 @@ public class PhotonConexion : MonoBehaviourPunCallbacks
     {
         Debug.Log("Conectados!!");
         PhotonNetwork.JoinRandomOrCreateRoom();
+        transform.position = new Vector3(1f,0f,1f);
     }
 
     public override void OnJoinedRoom()
