@@ -1,8 +1,9 @@
+using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Seguir : MonoBehaviour
+public class Seguir : MonoBehaviourPunCallbacks
 {
     public Transform objeto;
 
@@ -15,6 +16,9 @@ public class Seguir : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = objeto.position;
+        if (photonView.IsMine)
+        {
+            transform.position = objeto.position;
+        }
     }
 }
