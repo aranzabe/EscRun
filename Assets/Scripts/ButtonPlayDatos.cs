@@ -1,12 +1,13 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.XR.Interaction.Toolkit;
+using Photon.Pun;
 
 
 /**
  * Este script es para comprobar qué pasa cuando se pulsa el botón de la mesa de los cubos de los datos.
  */
-public class ButtonPlayDatos : MonoBehaviour
+public class ButtonPlayDatos : MonoBehaviourPunCallbacks
 {
     public GameObject button;
     //public UnityEvent onPress;
@@ -28,83 +29,96 @@ public class ButtonPlayDatos : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        //onPress.Invoke ();
-        sound.Play();
-        //if (!isPressed)
-        //{
-        //    //button.transform.localPosition = new Vector3 (0, 0.003f, 0);
-        //    presser = other.gameObject;
-            
-        //    isPressed = true;
-        //}
+        if (photonView.IsMine)
+        {
+            //onPress.Invoke ();
+            sound.Play();
+            //if (!isPressed)
+            //{
+            //    //button.transform.localPosition = new Vector3 (0, 0.003f, 0);
+            //    presser = other.gameObject;
+
+            //    isPressed = true;
+            //}
+        }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        comprobarDatos();
-        //onRelease.Invoke ();
-        //if (other == presser)
-        //{
-        //    //button.transform.localPosition = new Vector3(0, 0.015f,0);
+        if (photonView.IsMine)
+        {
+            comprobarDatos();
+            //onRelease.Invoke ();
+            //if (other == presser)
+            //{
+            //    //button.transform.localPosition = new Vector3(0, 0.015f,0);
 
-        //    isPressed = true;
-        //}
+            //    isPressed = true;
+            //}
+        }
     }
 
     public void comprobarDatos()
     {
-        texto.text = "";
-
-
-        //texto.text = "Enigma completado!!! Algo ha cambiado.";
-        //Vector3 currentPosition = cajon.transform.localPosition;
-        //float nuevaPosicionZ = currentPosition.z - 0.3f;
-        //cajon.transform.localPosition = new Vector3(currentPosition.x, currentPosition.y, nuevaPosicionZ);
-        //llaveGuardada.transform.localPosition = cajon.transform.localPosition;
-
-
-        if (!Parametros.enigmaDatosResuelto)
+        if (photonView.IsMine)
         {
-            Parametros.enigmaDatosResuelto = true;
-            for (int i = 0; i < Parametros.soportesBienColocados.Length; i++)
+            texto.text = "";
+
+
+            //texto.text = "Enigma completado!!! Algo ha cambiado.";
+            //Vector3 currentPosition = cajon.transform.localPosition;
+            //float nuevaPosicionZ = currentPosition.z - 0.3f;
+            //cajon.transform.localPosition = new Vector3(currentPosition.x, currentPosition.y, nuevaPosicionZ);
+            //llaveGuardada.transform.localPosition = cajon.transform.localPosition;
+
+
+            if (!Parametros.enigmaDatosResuelto)
             {
-                if (!Parametros.soportesBienColocados[i])
+                Parametros.enigmaDatosResuelto = true;
+                for (int i = 0; i < Parametros.soportesBienColocados.Length; i++)
                 {
-                    Parametros.enigmaDatosResuelto = false;
-                    texto.text = "Verifica los soportes";
-                }
-            }
-            if (Parametros.enigmaDatosResuelto)
-            {
-                for (int i = 0; i < Parametros.notasBienColocados.Length; i++)
-                {
-                    if (!Parametros.notasBienColocados[i])
+                    if (!Parametros.soportesBienColocados[i])
                     {
                         Parametros.enigmaDatosResuelto = false;
-                        texto.text = "Todavía falta algo";
+                        texto.text = "Verifica los soportes";
                     }
                 }
                 if (Parametros.enigmaDatosResuelto)
                 {
-                    texto.text = "Enigma completado!!! Algo ha cambiado.";
-                    Vector3 currentPosition = cajon.transform.localPosition;
-                    float nuevaPosicionZ = currentPosition.z - 0.3f;
-                    cajon.transform.localPosition = new Vector3(currentPosition.x, currentPosition.y, nuevaPosicionZ);
+                    for (int i = 0; i < Parametros.notasBienColocados.Length; i++)
+                    {
+                        if (!Parametros.notasBienColocados[i])
+                        {
+                            Parametros.enigmaDatosResuelto = false;
+                            texto.text = "Todavía falta algo";
+                        }
+                    }
+                    if (Parametros.enigmaDatosResuelto)
+                    {
+                        texto.text = "Enigma completado!!! Algo ha cambiado.";
+                        Vector3 currentPosition = cajon.transform.localPosition;
+                        float nuevaPosicionZ = currentPosition.z - 0.3f;
+                        cajon.transform.localPosition = new Vector3(currentPosition.x, currentPosition.y, nuevaPosicionZ);
 
-                    XRGrabInteractable xgrab = cajon.GetComponent<XRGrabInteractable>();
-                    xgrab.enabled = true;
+                        XRGrabInteractable xgrab = cajon.GetComponent<XRGrabInteractable>();
+                        xgrab.enabled = true;
+                    }
                 }
             }
-        } else
-        {
-            texto.text = "Este enigma ya está resuelto.";
+            else
+            {
+                texto.text = "Este enigma ya está resuelto.";
+            }
+            canvas.SetActive(true);
+            Invoke("DesactivarCanvas", 5f);
         }
-        canvas.SetActive(true);
-        Invoke("DesactivarCanvas", 5f);
     }
 
     private void DesactivarCanvas()
     {
-        canvas.SetActive(false);
+        if (photonView.IsMine)
+        {
+            canvas.SetActive(false);
+        }
     }
 }

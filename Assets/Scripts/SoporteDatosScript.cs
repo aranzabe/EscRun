@@ -1,10 +1,11 @@
+using Photon.Pun;
 using TMPro;
 using UnityEngine;
 
 /**
  * Este script es para comprobar si cada cubo está correctamente puesto en su soporte.
  */
-public class SoporteDatosScript : MonoBehaviour
+public class SoporteDatosScript : MonoBehaviourPunCallbacks
 {
     public GameObject soporte;
     private string numeroSoporte;
@@ -21,17 +22,20 @@ public class SoporteDatosScript : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        //texto.text = texto.text + "Enter: ";
-        string cuboNombre = other.tag;
-        string[] partesNombreCubo = cuboNombre.Split('_');
-        //texto.text = texto.text + " -- " + partesNombreCubo[2];
-        if (numeroSoporte == partesNombreCubo[2])
+        if (photonView.IsMine)
         {
-            Parametros.soportesBienColocados[int.Parse(numeroSoporte)] = true;
-        }
-        else
-        {
-            Parametros.soportesBienColocados[int.Parse(numeroSoporte)] = false;
+            //texto.text = texto.text + "Enter: ";
+            string cuboNombre = other.tag;
+            string[] partesNombreCubo = cuboNombre.Split('_');
+            //texto.text = texto.text + " -- " + partesNombreCubo[2];
+            if (numeroSoporte == partesNombreCubo[2])
+            {
+                Parametros.soportesBienColocados[int.Parse(numeroSoporte)] = true;
+            }
+            else
+            {
+                Parametros.soportesBienColocados[int.Parse(numeroSoporte)] = false;
+            }
         }
     }
 

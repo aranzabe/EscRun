@@ -1,8 +1,9 @@
+using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SigueSocketPuerta : MonoBehaviour
+public class SigueSocketPuerta : MonoBehaviourPunCallbacks
 {
     public Transform socket;
     public Transform puerta;
@@ -18,30 +19,39 @@ public class SigueSocketPuerta : MonoBehaviour
 
     void LateUpdate()
     {
-        if (!Parametros.pistaCondicion1_CogidaPrimeraVez)
+        if (photonView.IsMine)
         {
-            Vector3 seguimiento = socket.position + offset;
-            transform.position = seguimiento;
-            transform.rotation = rotacionInicial * Quaternion.Euler(puerta.rotation.eulerAngles.x, puerta.rotation.eulerAngles.y, 0);
-            
+            if (!Parametros.pistaCondicion1_CogidaPrimeraVez)
+            {
+                Vector3 seguimiento = socket.position + offset;
+                transform.position = seguimiento;
+                transform.rotation = rotacionInicial * Quaternion.Euler(puerta.rotation.eulerAngles.x, puerta.rotation.eulerAngles.y, 0);
+
+            }
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (!Parametros.pistaCondicion1_CogidaPrimeraVez)
+        if (photonView.IsMine)
         {
-            Parametros.pistaCondicion1_CogidaPrimeraVez = true;
+            if (!Parametros.pistaCondicion1_CogidaPrimeraVez)
+            {
+                Parametros.pistaCondicion1_CogidaPrimeraVez = true;
 
+            }
         }
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (!Parametros.pistaCondicion1_CogidaPrimeraVez)
+        if (photonView.IsMine)
         {
-            Parametros.pistaCondicion1_CogidaPrimeraVez = true;
+            if (!Parametros.pistaCondicion1_CogidaPrimeraVez)
+            {
+                Parametros.pistaCondicion1_CogidaPrimeraVez = true;
 
+            }
         }
     }
 }

@@ -1,10 +1,11 @@
+using Photon.Pun;
 using TMPro;
 using UnityEngine;
 
 /**
  * Este script es para comprobar si cada nota está correctamente puesta en su cubo. Caso de ser así el enigma 1 queda resuelto y se abrirá un cajón con la llave de una puerta.
  */
-public class CuboDatosScript : MonoBehaviour
+public class CuboDatosScript : MonoBehaviourPunCallbacks
 {
     public GameObject cubo;
     private string numeroCubo;
@@ -20,22 +21,28 @@ public class CuboDatosScript : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        texto.text = texto.text + "Enter cubo: ";
-        string notaNombre = other.tag;
-        string[] partesNombreNota = notaNombre.Split('_');
-        texto.text = texto.text + " -- " + partesNombreNota[2];
-        if (numeroCubo == partesNombreNota[2])
+        if (photonView.IsMine)
         {
-            Parametros.notasBienColocados[int.Parse(numeroCubo)] = true;
-        }
-        else
-        {
-            Parametros.notasBienColocados[int.Parse(numeroCubo)] = false;
+            texto.text = texto.text + "Enter cubo: ";
+            string notaNombre = other.tag;
+            string[] partesNombreNota = notaNombre.Split('_');
+            texto.text = texto.text + " -- " + partesNombreNota[2];
+            if (numeroCubo == partesNombreNota[2])
+            {
+                Parametros.notasBienColocados[int.Parse(numeroCubo)] = true;
+            }
+            else
+            {
+                Parametros.notasBienColocados[int.Parse(numeroCubo)] = false;
+            }
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        texto.text = "Exit cubo";
+        if (photonView.IsMine)
+        {
+            texto.text = "Exit cubo";
+        }
     }
 }

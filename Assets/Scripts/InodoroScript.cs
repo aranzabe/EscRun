@@ -1,9 +1,10 @@
+using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 
-public class InodoroScript : MonoBehaviour
+public class InodoroScript : MonoBehaviourPunCallbacks
 {
     public XRBaseInteractor interactor;
     public GameObject llaveInodoro;
@@ -17,9 +18,12 @@ public class InodoroScript : MonoBehaviour
 
     private void OnSelectExit(SelectExitEventArgs arg0)
     {
-        if (Parametros.enigmaCondicionalesResuelto)
+        if (photonView.IsMine)
         {
-            llaveInodoro.SetActive(true);
+            if (Parametros.enigmaCondicionalesResuelto)
+            {
+                llaveInodoro.SetActive(true);
+            }
         }
     }
 

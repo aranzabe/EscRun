@@ -1,6 +1,7 @@
+using Photon.Pun;
 using UnityEngine;
 
-public class Parametros : MonoBehaviour
+public class Parametros : MonoBehaviourPunCallbacks
 {
     //Classroom
     public static bool[] cajonesAbiertos = new bool[12];

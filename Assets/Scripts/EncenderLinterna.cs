@@ -1,6 +1,7 @@
+using Photon.Pun;
 using UnityEngine;
 
-public class EncenderLinterna : MonoBehaviour
+public class EncenderLinterna : MonoBehaviourPunCallbacks
 {
     public GameObject luz;
     // Start is called before the first frame update
@@ -22,12 +23,18 @@ public class EncenderLinterna : MonoBehaviour
 
     public void encenderLinterna()
     {
-        luz.SetActive(true);
+        if (photonView.IsMine)
+        {
+            luz.SetActive(true);
+        }
     }
 
     public void apagarLinterna()
     {
-        luz.SetActive(false);
+        if (photonView.IsMine)
+        {
+            luz.SetActive(false);
+        }
     }
 
     //private void OnCollisionEnter(Collision collision)
