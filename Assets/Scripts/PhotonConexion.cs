@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class PhotonConexion : MonoBehaviourPunCallbacks
 {
-    //public PhotonView playerPrefab;
-    //public Transform spawnPoint;
+    public PhotonView playerPrefab;
+    public Transform spawnPoint;
 
 
     // Start is called before the first frame update
@@ -17,14 +17,13 @@ public class PhotonConexion : MonoBehaviourPunCallbacks
 
     public override void OnConnectedToMaster()
     {
-        Debug.Log("Conectados!!");
+        //Debug.Log("Conectados!!");
         PhotonNetwork.JoinRandomOrCreateRoom();
-        transform.position = new Vector3(1f,0f,1f);
     }
 
     public override void OnJoinedRoom()
     {
-        //PhotonNetwork.Instantiate(playerPrefab.name, spawnPoint.position, spawnPoint.rotation);
+        PhotonNetwork.Instantiate(playerPrefab.name, spawnPoint.position, spawnPoint.rotation);
     }
 
 }

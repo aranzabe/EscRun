@@ -15,6 +15,6 @@ public class Seguir : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //transform.position = objeto.position;
+        transform.position = objeto.position;
     }
 }
