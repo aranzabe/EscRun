@@ -36,6 +36,7 @@ TagManager:
   - RightHand
   - Estatua
   - Boton_Proyector_1
+  - Abrelatas
   layers:
   - Default
   - TransparentFX
