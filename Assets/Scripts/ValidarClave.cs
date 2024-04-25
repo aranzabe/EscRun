@@ -9,6 +9,7 @@ public class ValidarClave : MonoBehaviour
     public TextMeshProUGUI cajaDeTexto;
     public TextMeshProUGUI pantalla;
     private Button botonValidar;
+    public GameObject tapaArcon;
     // Start is called before the first frame update
 
     private void Start()
@@ -16,28 +17,45 @@ public class ValidarClave : MonoBehaviour
         botonValidar = GetComponent<Button>();
         botonValidar.onClick.AddListener(validarClave);
     }
+
     public void validarClave()
     {
-        string textoCaja = cajaDeTexto.text;
-        if (!string.IsNullOrEmpty(textoCaja))
+        if (!Parametros.enigmaBuclesResuelto)
         {
-            textoCaja = textoCaja.Substring(0, textoCaja.Length - 1);
-            //pantalla.text = "L1: " + textoCaja.Length + " L2: " + "reloj".Length;
-            if (textoCaja == "reloj")
+            string textoCaja = cajaDeTexto.text;
+            if (!string.IsNullOrEmpty(textoCaja))
             {
-                Parametros.enigmaBuclesResuelto = true;
-                pantalla.text = "Enigma 3 resuelto!!!";
+                textoCaja = textoCaja.Substring(0, textoCaja.Length - 1);
+                //pantalla.text = "L1: " + textoCaja.Length + " L2: " + "reloj".Length;
+                if (textoCaja == Parametros.claveEnigmaBucle)
+                {
+                    Parametros.enigmaBuclesResuelto = true;
+                    pantalla.text = "Enigma 3 resuelto!!!  El baúl se está abriendo...";
+                    StartCoroutine(AbrirTapaDespuesDeEspera());
+                }
+                else
+                {
+                    pantalla.text = "Has fallado";
+                    Invoke("textoInicial", 1f);
+                }
             }
-            else
-            {
-                pantalla.text = "Has fallado";
-                Invoke("textoInicial", 1f);
-            }
-        } 
+        }
+        else
+        {
+            pantalla.text = "Enigma ya resuelto.  Comprueba el contenido del baúl...";
+        }
     }
 
     private void textoInicial()
     {
         pantalla.text = "Teclea la clave. No pierdas demasiado tiempo...";
+    }
+
+    IEnumerator AbrirTapaDespuesDeEspera()
+    {
+        yield return new WaitForSeconds(2f);
+        //Animator animator = tapaArcon.GetComponent<Animator>();
+        //animator.SetBool("abrirArcon", true);
+        tapaArcon.transform.Rotate(new Vector3(-100f, 0f, 0f));
     }
 }

@@ -37,6 +37,11 @@ TagManager:
   - Estatua
   - Boton_Proyector_1
   - Abrelatas
+  - PajaritaRoja
+  - PajaritaBlanca
+  - OjoVerde
+  - Cuerno
+  - Boto_Resolver_Objeto
   layers:
   - Default
   - TransparentFX

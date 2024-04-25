@@ -1,3 +1,5 @@
+using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Parametros : MonoBehaviour
@@ -10,9 +12,7 @@ public class Parametros : MonoBehaviour
     //Tipos de datos
     public static bool[] soportesBienColocados = new bool[6]; //0 - Byte, 1 - Int, 2 - Bool, 3 - String, 4 - Float, 5 - Char
     public static bool[] notasBienColocados = new bool[6]; //0 - Byte, 1 - Int, 2 - Bool, 3 - String, 4 - Float, 5 - Char
-
     public static bool enigmaDatosResuelto = false;
-
 
     //Condicionales
     public static bool enigmaCondicionalesResuelto = false;
@@ -29,5 +29,21 @@ public class Parametros : MonoBehaviour
     public static bool pistaCondicion1_CogidaPrimeraVez = false;
     public static bool puerta2HabitacionCuartoAbierta = false;
     public static bool[] aparatosEncendidos = new bool[2]; //0 el proyector y 1 el monitor de clase.
+
+    //Objetos
+    public static ArrayList contenidoOlla = new ArrayList();
+    public static ArrayList contenidoOllaBuscado = new ArrayList();
+    public static bool enigmaObjetosResuelto = false;
+
+    void Start()
+    {
+        contenidoOllaBuscado.Add("OjoVerde");
+        contenidoOllaBuscado.Add("OjoVerde");
+        contenidoOllaBuscado.Add("Cuerno");
+        contenidoOllaBuscado.Add("Cuerno");
+        contenidoOllaBuscado.Add("PajaritaRoja");
+        contenidoOllaBuscado.Sort();
+    }
+    
 }
 
