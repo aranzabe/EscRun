@@ -42,6 +42,22 @@ TagManager:
   - OjoVerde
   - Cuerno
   - Boto_Resolver_Objeto
+  - andar
+  - andarZombie
+  - correr
+  - atacar
+  - atacarFuerte
+  - mirar
+  - morir
+  - serGolpeado
+  - Boton_Secuencial_1
+  - Boton_Secuencial_2
+  - Boton_Secuencial_3
+  - Boton_Secuencial_4
+  - Boton_Bucle_1
+  - Boton_Bucle_2
+  - Boton_Bucle_3
+  - Boton_Bucle_4
   layers:
   - Default
   - TransparentFX

@@ -35,6 +35,9 @@ public class Parametros : MonoBehaviour
     public static ArrayList contenidoOllaBuscado = new ArrayList();
     public static bool enigmaObjetosResuelto = false;
 
+    public static string[] acciones = new string[4];
+    public static int[] ejecucionAcciones = new int[4]; //0 es secuencial, 1 repetitivo y 2 palanca sin posicionar correctamente.
+
     void Start()
     {
         contenidoOllaBuscado.Add("OjoVerde");
@@ -43,6 +46,10 @@ public class Parametros : MonoBehaviour
         contenidoOllaBuscado.Add("Cuerno");
         contenidoOllaBuscado.Add("PajaritaRoja");
         contenidoOllaBuscado.Sort();
+        for (int i = 0; i < Parametros.acciones.Length; i++)
+        {
+            acciones[i] = "";
+        }
     }
     
 }
