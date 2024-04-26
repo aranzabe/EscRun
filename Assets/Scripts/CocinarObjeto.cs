@@ -10,6 +10,8 @@ public class CocinarObjeto : MonoBehaviour
     public TextMeshProUGUI texto;
     private AudioSource sound;
     public GameObject esqueleto;
+    public GameObject panelDeMando;
+    public GameObject tarjetas;
 
 
     private void Start()
@@ -31,6 +33,8 @@ public class CocinarObjeto : MonoBehaviour
                 texto.text = "Receta correcta. Se ha creado un objeto que te espera en la clase... para que completes la receta. En la mesa del profesor encontrarás lo necesario.";
                 Parametros.enigmaObjetosResuelto = true;
                 esqueleto.SetActive(true);
+                panelDeMando.SetActive(true);
+                tarjetas.SetActive(true);
             }
             else
             {
@@ -42,7 +46,7 @@ public class CocinarObjeto : MonoBehaviour
             texto.text = "Esta parte de la receta está resuelta. Se ha creado un objeto que te espera en la clase... para que completes la receta. En la mesa del profesor encontrarás lo necesario.";
         }
         canvas.SetActive(true);
-        Invoke("DesactivarCanvas", 5f);
+        Invoke("DesactivarCanvas", 10f);
     }
 
     private bool comprobarCocido()

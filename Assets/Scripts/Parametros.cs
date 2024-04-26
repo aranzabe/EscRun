@@ -37,6 +37,9 @@ public class Parametros : MonoBehaviour
 
     public static string[] acciones = new string[4];
     public static int[] ejecucionAcciones = new int[4]; //0 es secuencial, 1 repetitivo y 2 palanca sin posicionar correctamente.
+    public static string[] accionesCorrectas = new string[4];
+    public static int[] ejecucionAccionesCorrectas = new int[4];
+    public static bool enigmaObjetosCompletoResuelto = false;  
 
     void Start()
     {
@@ -50,6 +53,14 @@ public class Parametros : MonoBehaviour
         {
             acciones[i] = "";
         }
+        Parametros.accionesCorrectas[0] = "andarZombie";
+        Parametros.accionesCorrectas[1] = "correr";
+        Parametros.accionesCorrectas[2] = "serGolpeado";
+        Parametros.accionesCorrectas[3] = "morir";
+        Parametros.ejecucionAccionesCorrectas[0] = 0;
+        Parametros.ejecucionAccionesCorrectas[1] = 1;
+        Parametros.ejecucionAccionesCorrectas[2] = 1;
+        Parametros.ejecucionAccionesCorrectas[0] = 0;
     }
     
 }

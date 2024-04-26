@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 
@@ -21,21 +23,49 @@ public class BotonRunEsqueleto : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         sound.Play();
-        texto.text = "Ejecutando programa...";
+        texto.text = "Ejecutando programa...\n";
     }
 
     private void OnTriggerExit(Collider other)
     {
-        //comprobarSecuenciaCorrecta();
         ejecutarPrograma();
         canvas.SetActive(true);
-        //Invoke("DesactivarCanvas", 5f);
     }
 
     private void ejecutarPrograma()
     {
-        mostrarAccionesPuestas();
-        StartCoroutine(EjecutarAnimaciones());
+        if (!Parametros.enigmaObjetosCompletoResuelto)
+        {
+            mostrarAccionesPuestas();
+            if (accionesPuestasCorrectamente())
+            {
+                StartCoroutine(EjecutarAnimaciones());
+            }
+            else
+            {
+                texto.text = "Faltan acciones por programar.";
+                Invoke("DesactivarCanvas", 5f);
+            }
+            
+        } else
+        {
+            texto.text = "Ya has resuelto este enigma. La estatua se ha convertido en cera, dentro guarda algo para ti.";
+            Invoke("DesactivarCanvas", 10f);
+        }
+       
+    }
+
+
+    private bool accionesPuestasCorrectamente()
+    {
+        bool correcto = true;
+        for (int i = 0;i < Parametros.acciones.Length;i++) { 
+            if (Parametros.acciones[i] == "")
+            {
+                correcto = false;
+            }
+        }
+        return correcto;
     }
 
     private IEnumerator EjecutarAnimaciones()
@@ -46,7 +76,7 @@ public class BotonRunEsqueleto : MonoBehaviour
         {
             if (Parametros.acciones[i] != "")
             {
-                textoAuxiliarGeneral.text += "Lanzando " + Parametros.acciones[i].ToString() + " ";
+                texto.text += "Lanzando " + Parametros.acciones[i].ToString() + " ";
                 switch (Parametros.acciones[i])
                 {
                     case "andar": animator.SetBool("andar", true); break;
@@ -59,12 +89,15 @@ public class BotonRunEsqueleto : MonoBehaviour
                     case "morir": animator.SetBool("morir", true); break;
                 }
                 //animator.SetBool(Parametros.acciones[i], true);    //<- Esto no funciona (????)
-                //StartCoroutine(Esperar(10.0f));
-                float duracionAnimacion = 5.0f;
+                float duracionAnimacion = 1.0f;
                 if (Parametros.ejecucionAcciones[i] == 1) //Repetitivo
                 {
-                    textoAuxiliarGeneral.text += " bucle ";
-                    duracionAnimacion = 15.0f;
+                    texto.text += " bucle \n";
+                    duracionAnimacion = 20.0f;
+                } else
+                {
+                    texto.text += " secuencial \n";
+                    duracionAnimacion = 5.0f;
                 }
                 //animator.SetBool(Parametros.acciones[i], false);
                 yield return new WaitForSeconds(duracionAnimacion);
@@ -81,17 +114,43 @@ public class BotonRunEsqueleto : MonoBehaviour
                 }
             }
         }
+        if (comprobarSecuenciaCorrecta())
+        {
+            Parametros.enigmaObjetosCompletoResuelto = true;
+            texto.text += "Has elegido sabiamente. La estatua se ha convertido en cera, dentro guarda algo para ti.";
+        }
+        else
+        {
+            texto.text += "Programa incorrecto";
+        }
+        Invoke("DesactivarCanvas", 10f);
     }
 
  
 
     void mostrarAccionesPuestas()
     {
-        textoAuxiliarGeneral.text = "";
+        textoAuxiliarGeneral.text = "Acciones: ";
         for (int i = 0; i < Parametros.acciones.Length; i++)
         {
             textoAuxiliarGeneral.text += "[" + i + "]= " + Parametros.acciones[i] + " ";
         }
+        textoAuxiliarGeneral.text += "\nAcciones Correctas: ";
+        for (int i = 0; i < Parametros.acciones.Length; i++)
+        {
+            textoAuxiliarGeneral.text += "[" + i + "]= " + Parametros.accionesCorrectas[i] + " ";
+        }
+        textoAuxiliarGeneral.text += "\nEjecución: ";
+        for (int i = 0; i < Parametros.acciones.Length; i++)
+        {
+            textoAuxiliarGeneral.text += "[" + i + "]= " + Parametros.ejecucionAcciones[i] + " ";
+        }
+        textoAuxiliarGeneral.text += "\nEjecución correcta: ";
+        for (int i = 0; i < Parametros.acciones.Length; i++)
+        {
+            textoAuxiliarGeneral.text += "[" + i + "]= " + Parametros.ejecucionAccionesCorrectas[i] + " ";
+        }
+
     }
 
 
@@ -103,7 +162,9 @@ public class BotonRunEsqueleto : MonoBehaviour
 
     private bool comprobarSecuenciaCorrecta()
     {
-        return true;
+        
+        bool correcto = Parametros.acciones.SequenceEqual(Parametros.accionesCorrectas) && Parametros.ejecucionAcciones.SequenceEqual(Parametros.ejecucionAccionesCorrectas);
+        return correcto;
     }
 
     private void DesactivarCanvas()
