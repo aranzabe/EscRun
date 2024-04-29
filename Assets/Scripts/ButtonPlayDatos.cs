@@ -86,7 +86,7 @@ public class ButtonPlayDatos : MonoBehaviour
                 }
                 if (Parametros.enigmaDatosResuelto)
                 {
-                    texto.text = "Enigma completado!!! Algo ha cambiado.";
+                    texto.text = "Enigma completado!!! Algo se ha abierto...";
                     Vector3 currentPosition = cajon.transform.localPosition;
                     float nuevaPosicionZ = currentPosition.z - 0.3f;
                     cajon.transform.localPosition = new Vector3(currentPosition.x, currentPosition.y, nuevaPosicionZ);

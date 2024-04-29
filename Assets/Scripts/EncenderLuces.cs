@@ -8,6 +8,7 @@ public class EncenderLuces : MonoBehaviour
     public GameObject luzCuarto;
     public GameObject luzSalon;
     private AudioSource sound;
+    public GameObject ordenadorEscritorio;
 
     private string nombreSala;
 
@@ -27,6 +28,7 @@ public class EncenderLuces : MonoBehaviour
         if (nombreSala == "onSalon")
         {
             luzSalon.SetActive(true);
+            ordenadorEscritorio.SetActive(true);
         }
         sound.Play(); 
     }
