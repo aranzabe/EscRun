@@ -7,6 +7,7 @@ public class InodoroScript : MonoBehaviour
 {
     public XRBaseInteractor interactor;
     public GameObject llaveInodoro;
+    public GameObject RAM2;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,6 +21,7 @@ public class InodoroScript : MonoBehaviour
         if (Parametros.enigmaCondicionalesResuelto)
         {
             llaveInodoro.SetActive(true);
+            RAM2.SetActive(true);
         }
     }
 

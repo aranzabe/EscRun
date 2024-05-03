@@ -12,11 +12,15 @@ public class CocinarObjeto : MonoBehaviour
     public GameObject esqueleto;
     public GameObject panelDeMando;
     public GameObject tarjetas;
+    private AudioSource audioSource;
+    public AudioClip clipReposoEsqueleto;
 
 
     private void Start()
     {
         sound = GetComponent<AudioSource>();
+        audioSource = esqueleto.GetComponent<AudioSource>();
+        audioSource.clip = clipReposoEsqueleto;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -35,6 +39,7 @@ public class CocinarObjeto : MonoBehaviour
                 esqueleto.SetActive(true);
                 panelDeMando.SetActive(true);
                 tarjetas.SetActive(true);
+                audioSource.Play();
             }
             else
             {

@@ -13,12 +13,15 @@ public class BotonRunEsqueleto : MonoBehaviour
     private AudioSource sound;
     private Animator animator;
     public TextMeshProUGUI textoAuxiliarGeneral;
+    private AudioSource audioSource;
+    public AudioClip[] clips;
 
     // Start is called before the first frame update
     void Start()
     {
         animator = esqueleto.GetComponent<Animator>();  
         sound = GetComponent<AudioSource>();
+        audioSource = esqueleto.GetComponent<AudioSource>();
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -79,15 +82,16 @@ public class BotonRunEsqueleto : MonoBehaviour
                 texto.text += "Lanzando " + Parametros.acciones[i].ToString() + " ";
                 switch (Parametros.acciones[i])
                 {
-                    case "andar": animator.SetBool("andar", true); break;
-                    case "correr": animator.SetBool("correr", true); break;
-                    case "andarZombie": animator.SetBool("andarZombie", true); break;
-                    case "atacar": animator.SetBool("atacar", true); break;
-                    case "atacarFuerte": animator.SetBool("atacarFuerte", true); break;
-                    case "mirar": animator.SetBool("mirar", true); break;
-                    case "serGolpeado": animator.SetBool("serGolpeado", true); break;
-                    case "morir": animator.SetBool("morir", true); break;
+                    case "andar": animator.SetBool("andar", true); audioSource.clip = clips[1]; break;
+                    case "correr": animator.SetBool("correr", true); audioSource.clip = clips[2]; break;
+                    case "andarZombie": animator.SetBool("andarZombie", true); audioSource.clip = clips[3];  break;
+                    case "atacar": animator.SetBool("atacar", true); audioSource.clip = clips[4]; break;
+                    case "atacarFuerte": animator.SetBool("atacarFuerte", true); audioSource.clip = clips[5]; break;
+                    case "mirar": animator.SetBool("mirar", true); audioSource.clip = clips[6]; break;
+                    case "serGolpeado": animator.SetBool("serGolpeado", true); audioSource.clip = clips[7]; break;
+                    case "morir": animator.SetBool("morir", true); audioSource.clip = clips[8]; break;
                 }
+                audioSource.Play();
                 //animator.SetBool(Parametros.acciones[i], true);    //<- Esto no funciona (????)
                 float duracionAnimacion = 1.0f;
                 if (Parametros.ejecucionAcciones[i] == 1) //Repetitivo
@@ -101,6 +105,7 @@ public class BotonRunEsqueleto : MonoBehaviour
                 }
                 //animator.SetBool(Parametros.acciones[i], false);
                 yield return new WaitForSeconds(duracionAnimacion);
+                audioSource.Stop();
                 switch (Parametros.acciones[i])
                 {
                     case "andar": animator.SetBool("andar", false); break;
@@ -113,6 +118,8 @@ public class BotonRunEsqueleto : MonoBehaviour
                     case "morir": animator.SetBool("morir", false); break;
                 }
             }
+            audioSource.clip = clips[0];
+            audioSource.Play();
         }
         if (comprobarSecuenciaCorrecta())
         {

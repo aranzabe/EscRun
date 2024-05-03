@@ -41,6 +41,24 @@ public class Parametros : MonoBehaviour
     public static int[] ejecucionAccionesCorrectas = new int[4];
     public static bool enigmaObjetosCompletoResuelto = false;  
 
+    //Enigma final - CPU
+    public static bool[] piezasCPUColocadas = new bool[4]; //0 - RAM1, 1 - RAM2, 2 - CPU, 3 - Disipador.
+    public static bool ordenadorEncendido = false;
+    public static bool botonEncendidoDisponible = false;
+
+    public static bool todosComponentesCPUOk()
+    {
+        bool ok = true;
+        for (int i = 0; i < piezasCPUColocadas.Length; i++)
+        {
+            if (piezasCPUColocadas[i] == false)
+            {
+                ok = false;
+            }
+        }
+        return ok;
+    }
+
     void Start()
     {
         contenidoOllaBuscado.Add("OjoVerde");
