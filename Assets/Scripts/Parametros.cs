@@ -46,6 +46,8 @@ public class Parametros : MonoBehaviour
     public static bool ordenadorEncendido = false;
     public static bool botonEncendidoDisponible = false;
 
+    private static bool yaInicializado = false;
+
     public static bool todosComponentesCPUOk()
     {
         bool ok = true;
@@ -61,24 +63,29 @@ public class Parametros : MonoBehaviour
 
     void Start()
     {
-        contenidoOllaBuscado.Add("OjoVerde");
-        contenidoOllaBuscado.Add("OjoVerde");
-        contenidoOllaBuscado.Add("Cuerno");
-        contenidoOllaBuscado.Add("Cuerno");
-        contenidoOllaBuscado.Add("PajaritaRoja");
-        contenidoOllaBuscado.Sort();
-        for (int i = 0; i < Parametros.acciones.Length; i++)
+        if (!yaInicializado)
         {
-            acciones[i] = "";
+            contenidoOllaBuscado.Add("OjoVerde");
+            contenidoOllaBuscado.Add("OjoVerde");
+            contenidoOllaBuscado.Add("Cuerno");
+            contenidoOllaBuscado.Add("Cuerno");
+            contenidoOllaBuscado.Add("PajaritaRoja");
+            contenidoOllaBuscado.Sort();
+            for (int i = 0; i < Parametros.acciones.Length; i++)
+            {
+                acciones[i] = "";
+            }
+            Parametros.accionesCorrectas[0] = "andarZombie";
+            Parametros.accionesCorrectas[1] = "correr";
+            Parametros.accionesCorrectas[2] = "serGolpeado";
+            Parametros.accionesCorrectas[3] = "morir";
+            Parametros.ejecucionAccionesCorrectas[0] = 0;
+            Parametros.ejecucionAccionesCorrectas[1] = 1;
+            Parametros.ejecucionAccionesCorrectas[2] = 1;
+            Parametros.ejecucionAccionesCorrectas[0] = 0;
+
+            yaInicializado = true;
         }
-        Parametros.accionesCorrectas[0] = "andarZombie";
-        Parametros.accionesCorrectas[1] = "correr";
-        Parametros.accionesCorrectas[2] = "serGolpeado";
-        Parametros.accionesCorrectas[3] = "morir";
-        Parametros.ejecucionAccionesCorrectas[0] = 0;
-        Parametros.ejecucionAccionesCorrectas[1] = 1;
-        Parametros.ejecucionAccionesCorrectas[2] = 1;
-        Parametros.ejecucionAccionesCorrectas[0] = 0;
     }
     
 }

@@ -23,7 +23,7 @@ public class SeguirInventario : MonoBehaviour
         }
         else
         {
-            transform.position = new Vector3(10f, 0f, 5f);
+            transform.position = new Vector3(15f, 0f, 10f);
         }
     }
 
