@@ -19,6 +19,10 @@ public class ButtonPlayDatos : MonoBehaviour
     //private GameObject presser;
     //bool isPressed;
 
+    //Estos elementos están ocultos hasta que se resuelva el enigma.
+    public GameObject linternaCajon3;
+    public GameObject llaveCajon3;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -93,6 +97,8 @@ public class ButtonPlayDatos : MonoBehaviour
 
                     XRGrabInteractable xgrab = cajon.GetComponent<XRGrabInteractable>();
                     xgrab.enabled = true;
+                    linternaCajon3.SetActive(true);
+                    llaveCajon3.SetActive(true);
                 }
             }
         } else

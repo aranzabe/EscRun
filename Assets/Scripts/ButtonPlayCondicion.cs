@@ -82,47 +82,51 @@ public class ButtonPlayCondicion : MonoBehaviour
     {
         texto.text = "";
 
-
-        if (!Parametros.enigmaCondicionalesResuelto)
+        if (Parametros.enZocalo[5])
         {
-            Parametros.enigmaCondicionalesResuelto = true;
-            for (int i = 0; i < Parametros.soportesInterruptoresBienColocados.Length; i++)
+            if (!Parametros.enigmaCondicionalesResuelto)
             {
-                if (!Parametros.soportesInterruptoresBienColocados[i])
+                Parametros.enigmaCondicionalesResuelto = true;
+                for (int i = 0; i < Parametros.soportesInterruptoresBienColocados.Length; i++)
                 {
-                    Parametros.enigmaCondicionalesResuelto = false;
-                    texto.text = "Verifica los soportes";
-                }
-            }
-            if (Parametros.enigmaCondicionalesResuelto)
-            {
-                for (int i = 0; i < Parametros.solucionEnigmaCondiciones.Length; i++)
-                {
-                    if (Parametros.botonCondicionPulsado[i] != Parametros.solucionEnigmaCondiciones[i])
+                    if (!Parametros.soportesInterruptoresBienColocados[i])
                     {
                         Parametros.enigmaCondicionalesResuelto = false;
-                        texto.text = "Todavía falta algo";
+                        texto.text = "Verifica los soportes";
                     }
                 }
                 if (Parametros.enigmaCondicionalesResuelto)
                 {
-                    texto.text = "Enigma 2 completado!!! Pero estoy atascada, necesito que me ayudes para poder liberarte...";
+                    for (int i = 0; i < Parametros.solucionEnigmaCondiciones.Length; i++)
+                    {
+                        if (Parametros.botonCondicionPulsado[i] != Parametros.solucionEnigmaCondiciones[i])
+                        {
+                            Parametros.enigmaCondicionalesResuelto = false;
+                            texto.text = "Todavía falta algo";
+                        }
+                    }
+                    if (Parametros.enigmaCondicionalesResuelto)
+                    {
+                        texto.text = "Enigma 2 completado!!! Pero estoy atascada, necesito que me ayudes para poder liberarte...";
+                    }
                 }
             }
-        }
-        else
-        {
-            if (Parametros.puerta2HabitacionCuartoAbierta)
+            else
             {
-                texto.text = "Este enigma ya está resuelto.";
-            } else
-            {
-                texto.text = "Estoy atascada, necesito que me ayudes para poder liberarte...";
+                if (Parametros.puerta2HabitacionCuartoAbierta)
+                {
+                    texto.text = "Este enigma ya está resuelto.";
+                }
+                else
+                {
+                    texto.text = "Estoy atascada, necesito que me ayudes para poder liberarte...";
+                }
+
             }
-            
+            canvas.SetActive(true);
+            Invoke("DesactivarCanvas", 5f);
         }
-        canvas.SetActive(true);
-        Invoke("DesactivarCanvas", 5f);
+        
     }
 
     private void DesactivarCanvas()

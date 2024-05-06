@@ -48,6 +48,11 @@ public class Parametros : MonoBehaviour
 
     private static bool yaInicializado = false;
 
+    //Para la escena final
+    public static string textoFinal = "";
+    public static int segundos = 59;
+    public static int minutos = 59;
+
     public static bool todosComponentesCPUOk()
     {
         bool ok = true;
@@ -87,6 +92,7 @@ public class Parametros : MonoBehaviour
             yaInicializado = true;
         }
     }
-    
+
+   
 }
 

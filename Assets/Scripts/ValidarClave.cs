@@ -12,6 +12,11 @@ public class ValidarClave : MonoBehaviour
     public GameObject tapaArcon;
     // Start is called before the first frame update
 
+    //Estos elementos estarán ocultos en el baúl hasta que se resuelva el enigma.
+    public GameObject abrelatas;
+    public GameObject cpu;
+    public GameObject receta;
+
     private void Start()
     {
         botonValidar = GetComponent<Button>();
@@ -31,6 +36,9 @@ public class ValidarClave : MonoBehaviour
                 {
                     Parametros.enigmaBuclesResuelto = true;
                     pantalla.text = "Enigma 3 resuelto!!!  El baúl se está abriendo...";
+                    abrelatas.SetActive(true);
+                    cpu.SetActive(true);
+                    receta.SetActive(true);
                     StartCoroutine(AbrirTapaDespuesDeEspera());
                 }
                 else

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class AbrirPuertaFinal : MonoBehaviour
 {
@@ -26,6 +27,8 @@ public class AbrirPuertaFinal : MonoBehaviour
         if (Parametros.ordenadorEncendido)
         {
             texto.text = "Has salido! Enhorabuena.";
+            Parametros.textoFinal = "Lo has conseguido. ¡Enhorabuena! Tiempo: " + Parametros.minutos + ":" + Parametros.segundos;
+            SceneManager.LoadScene("Sala_Final");
         }
         else
         {

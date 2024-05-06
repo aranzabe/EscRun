@@ -12,6 +12,14 @@ public class CerradurasScript : MonoBehaviour
     public GameObject canvas;
     public TextMeshProUGUI texto;
     public AudioSource audioSource;
+
+    //Estos son los objetos ocultos hasta que se abre el cajón 1.
+    public GameObject tarjetaCajon1;
+    public GameObject cuboByteCajon1;
+
+    public GameObject memoriaRAMCajon4;
+    public GameObject llaveCajon4;
+    public GameObject botonCajon4;
    
 
     private void OnTriggerEnter(Collider other)
@@ -35,19 +43,30 @@ public class CerradurasScript : MonoBehaviour
                 XRGrabInteractable xgrab = cerraduraAbre.GetComponent<XRGrabInteractable>();
                 xgrab.enabled = true;
                 Parametros.cajonesAbiertos[int.Parse(numeroElemento) -1] = true;
-                texto.text = partesNombreCerradura[1] + " " + numeroElemento + " abierto";
+                texto.text = partesNombreCerradura[1] + " abierto";
+                if (int.Parse(numeroElemento) == 1)
+                {
+                    tarjetaCajon1.SetActive(true);
+                    cuboByteCajon1.SetActive(true);
+                }
+                if (int.Parse(numeroElemento) == 4)
+                {
+                    memoriaRAMCajon4.SetActive(true);
+                    llaveCajon4.SetActive(true);
+                    botonCajon4.SetActive(true); 
+                }
             }
             if (partesNombreCerradura[1] == "Armario" && partesNombreLlave[1] == "Armario")
             {
                 audioSource.Play();
 
                 Parametros.armariosAbiertos[int.Parse(numeroElemento) - 1] = true;
-                texto.text = partesNombreCerradura[1] + " " + numeroElemento + " abierto";
+                texto.text = partesNombreCerradura[1] + " abierto";
             }
             if (partesNombreCerradura[1] == "Puerta" && partesNombreLlave[1] == "Puerta")
             {
                 
-                texto.text = partesNombreCerradura[1] + " " + numeroElemento + " abierta";
+                texto.text = partesNombreCerradura[1] + " abierta";
                
                 if (partesNombreLlave[1] == "Puerta" && partesNombreLlave[2] == "1") //Es la puerta que va de la clase a la habitación y tiene que desaparecer.
                 {
