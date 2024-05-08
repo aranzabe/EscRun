@@ -91,6 +91,8 @@ public class BotonRunEsqueleto : MonoBehaviour
                     case "serGolpeado": animator.SetBool("serGolpeado", true); audioSource.clip = clips[7]; break;
                     case "morir": animator.SetBool("morir", true); audioSource.clip = clips[8]; break;
                 }
+                //Retardo para sincronizar audio y animación.
+                yield return new WaitForSeconds(3.6f);
                 audioSource.Play();
                 //animator.SetBool(Parametros.acciones[i], true);    //<- Esto no funciona (????)
                 float duracionAnimacion = 1.0f;
