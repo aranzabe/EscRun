@@ -27,26 +27,32 @@ public class SecuenciaAccionesScript : MonoBehaviour
     // Start is called before the first frame update
     private void OnTriggerEnter(Collider other)
     {
-        textoAuxiliarGeneral.text = "Entrando en triger " + partesNombreBoton[0] + " " + partesNombreBoton[1] + " " + partesNombreBoton[2];
-        sound.Play();
-        if (partesNombreBoton[1] == "Secuencial")
+        if (other.tag == "Collider_Interruptor_Panel")
         {
-            Parametros.ejecucionAcciones[int.Parse(partesNombreBoton[2]) - 1] = 0;
+            textoAuxiliarGeneral.text = "Entrando en triger " + partesNombreBoton[0] + " " + partesNombreBoton[1] + " " + partesNombreBoton[2];
+            sound.Play();
+            if (partesNombreBoton[1] == "Secuencial")
+            {
+                Parametros.ejecucionAcciones[int.Parse(partesNombreBoton[2]) - 1] = 0;
+            }
+            if (partesNombreBoton[1] == "Bucle")
+            {
+                Parametros.ejecucionAcciones[int.Parse(partesNombreBoton[2]) - 1] = 1;
+            }
+            meshRenderer.material = pressedMaterial;
+            mostrarEstado();
         }
-        if (partesNombreBoton[1] == "Bucle")
-        {
-            Parametros.ejecucionAcciones[int.Parse(partesNombreBoton[2]) - 1] = 1;
-        }
-        meshRenderer.material = pressedMaterial;
-        mostrarEstado();
     }
 
     private void OnTriggerExit(Collider other)
     {
-        textoAuxiliarGeneral.text = "Saliendo triger";
-        Parametros.ejecucionAcciones[int.Parse(partesNombreBoton[2]) - 1] = 2;
-        meshRenderer.material = normalMaterial;
-        mostrarEstado();
+        if (other.tag == "Collider_Interruptor_Panel")
+        {
+            textoAuxiliarGeneral.text = "Saliendo triger";
+            Parametros.ejecucionAcciones[int.Parse(partesNombreBoton[2]) - 1] = 2;
+            meshRenderer.material = normalMaterial;
+            mostrarEstado();
+        }
     }
 
     private void mostrarEstado()

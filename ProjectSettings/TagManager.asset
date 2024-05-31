@@ -58,6 +58,7 @@ TagManager:
   - Boton_Bucle_2
   - Boton_Bucle_3
   - Boton_Bucle_4
+  - Collider_Interruptor_Panel
   layers:
   - Default
   - TransparentFX

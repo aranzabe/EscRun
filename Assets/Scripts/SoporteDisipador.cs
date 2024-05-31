@@ -32,7 +32,7 @@ public class SoporteDisipador : MonoBehaviour
         if (Parametros.todosComponentesCPUOk())
         {
             canvas.SetActive(true);
-            textoAuxiliarGeneral.text = "CPU funcional. Este ordenador controla la puerta de salida que hay en la clase... eres libre. CORRE!!!";
+            textoAuxiliarGeneral.text = "CPU funcional. Este ordenador controla la puerta de salida que hay en la clase... eres libre. Arranca el ordenador y CORRE!!!";
         }
     }
 

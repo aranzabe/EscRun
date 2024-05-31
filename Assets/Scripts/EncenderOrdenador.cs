@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Audio;
 
@@ -27,6 +28,8 @@ public class EncenderOrdenador : MonoBehaviour
     private AudioSource sound3;
     private AudioSource sound4;
     public AudioClip[] clips;
+    public GameObject canvas;
+    public TextMeshProUGUI textoAuxiliarGeneral;
 
     void Start()
     {
@@ -78,6 +81,8 @@ public class EncenderOrdenador : MonoBehaviour
             sound2.Play();
             sound3.Play();
             sound4.Play();
+            canvas.SetActive(true);
+            textoAuxiliarGeneral.text = "CPU funcional. Este ordenador controla la puerta de salida que hay en la clase... eres libre. Arranca el ordenador y CORRE!!!";
         }
 
     }
